@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Header from "./components/Header.vue";
-import SubscriptionCard from "./components/SubscriptionCard.vue";
+import SubscriptionCarousel from "./components/SubscriptionCarousel.vue";
 </script>
 
 <template>
   <Header />
-  <SubscriptionCard />
+  <SubscriptionCarousel />
 </template>
 
 <style scoped></style>
