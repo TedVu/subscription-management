@@ -21,7 +21,7 @@ const props = defineProps({
       <div>Subscribed on {{ date }}</div>
     </v-card-text>
     <v-card-actions>
-      <v-btn color="orange"> Details </v-btn>
+      <v-btn color="blue"> Details </v-btn>
     </v-card-actions>
   </v-card>
 </template>
