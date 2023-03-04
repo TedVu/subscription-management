@@ -3,21 +3,19 @@ import SubscriptionCard from "./SubscriptionCard.vue";
 </script>
 
 <template>
-  <v-carousel hide-delimiters>
-    <v-carousel-item
-      ><SubscriptionCard title="Youtube" :date="new Date('02 Feb 2022')"
-    /></v-carousel-item>
+  <v-container class="bg-surface-variant">
+    <v-row no-gutters>
+      <v-col v-for="n in 3" :key="n" cols="12" sm="4">
+        <v-sheet class="ma-2 pa-2">
+          <SubscriptionCard
+            title="Twitter Blue"
+            :date="new Date('02 Feb 2024')"
+          />
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </v-container>
 
-    <v-carousel-item
-      ><SubscriptionCard
-        title="Curiosity Stream"
-        :date="new Date('02 Feb 2023')"
-    /></v-carousel-item>
-
-    <v-carousel-item
-      ><SubscriptionCard title="Twitter Blue" :date="new Date('02 Feb 2024')"
-    /></v-carousel-item>
-  </v-carousel>
   <span class="ops-btn">
     <v-btn variant="flat" color="success"> Add </v-btn>
   </span>
