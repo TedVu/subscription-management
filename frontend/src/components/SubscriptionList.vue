@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import SubscriptionCard from "./SubscriptionCard.vue";
+// Moment
+import moment from "moment";
 
 export type SubscriptionItem = {
   title: String;
@@ -19,7 +21,7 @@ const props = defineProps({
         <v-sheet class="ma-2 pa-2">
           <SubscriptionCard
             title="Twitter Blue"
-            :date="new Date('02 Feb 2024')"
+            :date="moment('02-02-2023').format('DD-MM-YYYY')"
           />
         </v-sheet>
       </v-col>

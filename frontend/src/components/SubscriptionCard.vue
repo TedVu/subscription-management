@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps({
   title: String,
-  date: Date,
+  date: String,
   imageUrl: String,
 });
 </script>
