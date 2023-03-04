@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import SubscriptionCard from "./SubscriptionCard.vue";
+
+export type SubscriptionItem = {
+  title: String;
+  date: Date;
+  imageUrl: String;
+};
+
+const props = defineProps({
+  subscriptionItem: Array<SubscriptionItem>,
+});
 </script>
 
 <template>
