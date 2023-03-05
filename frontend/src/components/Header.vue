@@ -22,12 +22,12 @@ const handleNavigation = (page: String) => {
     <v-layout>
       <v-app-bar color="info" density="comfortable">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-app-bar-title>My Subscription</v-app-bar-title>
+        <v-app-bar-title>Subscription Management Application</v-app-bar-title>
       </v-app-bar>
       <v-navigation-drawer v-model="drawer" temporary>
         <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/13.jpg"
-          title="John Leider"
+          prepend-avatar="https://tedvublogimages.s3.us-west-1.amazonaws.com/profilepics.jpg"
+          title="Ted Vu"
         ></v-list-item>
 
         <v-divider></v-divider>
