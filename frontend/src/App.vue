@@ -1,11 +1,7 @@
-<script setup lang="ts">
-import Header from "./components/Header.vue";
-import SubscriptionList from "./components/SubscriptionList.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <Header />
-  <SubscriptionList />
+  <router-view></router-view>
 </template>
 
 <style scoped></style>
