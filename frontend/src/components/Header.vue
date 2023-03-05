@@ -1,7 +1,18 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const drawer = ref(false);
+
+const router = useRouter();
+
+const handleNavigation = (page: String) => {
+  if (page == "About") {
+    router.push("/about");
+  } else {
+    router.push("/");
+  }
+};
 </script>
 
 <template>
@@ -13,7 +24,7 @@ const drawer = ref(false);
       </v-app-bar>
       <v-navigation-drawer v-model="drawer" temporary>
         <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+          prepend-avatar="https://randomuser.me/api/portraits/men/13.jpg"
           title="John Leider"
         ></v-list-item>
 
@@ -24,11 +35,13 @@ const drawer = ref(false);
             prepend-icon="mdi-view-dashboard"
             title="Home"
             value="home"
+            @click="handleNavigation('Home')"
           ></v-list-item>
           <v-list-item
             prepend-icon="mdi-forum"
             title="About"
             value="about"
+            @click="handleNavigation('About')"
           ></v-list-item>
         </v-list>
       </v-navigation-drawer>
