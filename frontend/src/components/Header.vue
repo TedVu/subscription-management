@@ -43,6 +43,12 @@ const handleNavigation = (page: String) => {
             value="about"
             @click="handleNavigation('About')"
           ></v-list-item>
+          <v-list-item
+            prepend-icon="mdi-account"
+            title="New Subscription"
+            value="New Subscription"
+            @click="handleNavigation('About')"
+          ></v-list-item>
         </v-list>
       </v-navigation-drawer>
     </v-layout>
