@@ -4,6 +4,7 @@ import App from "./App.vue";
 // Pages
 import About from "./Pages/About.vue";
 import Home from "./Pages/Home.vue";
+import NewSubscription from "./Pages/NewSubscription.vue";
 
 // Vuetify and styling
 import "vuetify/styles";
@@ -24,6 +25,7 @@ const vuetify = createVuetify({
 const routes = [
   { path: "/", name: "Home", component: Home },
   { path: "/about", component: About },
+  { path: "/new-subcription", component: NewSubscription },
 ];
 
 const router = VueRouter.createRouter({

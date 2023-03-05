@@ -9,6 +9,8 @@ const router = useRouter();
 const handleNavigation = (page: String) => {
   if (page == "About") {
     router.push("/about");
+  } else if (page == "NewSubcription") {
+    router.push("/new-subcription");
   } else {
     router.push("/");
   }
@@ -47,7 +49,7 @@ const handleNavigation = (page: String) => {
             prepend-icon="mdi-account"
             title="New Subscription"
             value="New Subscription"
-            @click="handleNavigation('About')"
+            @click="handleNavigation('NewSubcription')"
           ></v-list-item>
         </v-list>
       </v-navigation-drawer>
