@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import SubscriptionCard from "./SubscriptionCard.vue";
+import { Card } from "./types";
+import { PropType } from "vue";
 // Moment
 import moment from "moment";
 
-export type SubscriptionItem = {
-  title: String;
-  date: Date;
-  imageUrl: String;
-};
-
 const props = defineProps({
-  subscriptionItem: Array<SubscriptionItem>,
+  subscriptionItem: Array as PropType<Card[]>,
 });
 </script>
 
@@ -20,8 +16,11 @@ const props = defineProps({
       <v-col v-for="n in 10" :key="n" cols="12" sm="4">
         <v-sheet class="ma-2 pa-2">
           <SubscriptionCard
-            title="Twitter Blue"
-            :date="moment('02-02-2023').format('DD-MM-YYYY')"
+            :card="{
+              title: 'Youtube',
+              date: moment('02-02-2023').format('DD-MM-YYYY'),
+              imageUrl: '',
+            }"
           />
         </v-sheet>
       </v-col>
