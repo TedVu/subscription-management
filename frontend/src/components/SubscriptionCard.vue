@@ -7,11 +7,11 @@ defineProps({
 </script>
 
 <template>
-  <v-card class="mx-auto" max-width="400">
+  <v-card class="mx-auto" max-width="600">
     <v-img
       class="align-end text-black"
       height="200"
-      width="350"
+      width="600"
       src="https://lh3.googleusercontent.com/3zkP2SYe7yYoKKe47bsNe44yTgb4Ukh__rBbwXwgkjNRe4PykGG409ozBxzxkrubV7zHKjfxq6y9ShogWtMBMPyB3jiNps91LoNH8A=s500"
       cover
     >

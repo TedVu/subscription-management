@@ -23,11 +23,6 @@ onMounted(() => {
       date: moment("02-02-2023").format("DD-MM-YYYY"),
       imageUrl: "",
     },
-    {
-      title: "Twitch",
-      date: moment("02-02-2023").format("DD-MM-YYYY"),
-      imageUrl: "",
-    },
   ];
 });
 </script>
