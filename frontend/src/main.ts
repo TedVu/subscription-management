@@ -4,6 +4,7 @@ import App from "./App.vue";
 // Pages
 import About from "./Pages/About.vue";
 import Home from "./Pages/Home.vue";
+import Login from "./Pages/Login.vue";
 import NewSubscription from "./Pages/NewSubscription.vue";
 
 // Vuetify and styling
@@ -14,6 +15,28 @@ import * as directives from "vuetify/directives";
 import "@mdi/font/css/materialdesignicons.css";
 import "./style.css";
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyC85KMacum02NekX0TXG34LIEJRyNoqcW8",
+  authDomain: "subscription-management-40f86.firebaseapp.com",
+  projectId: "subscription-management-40f86",
+  storageBucket: "subscription-management-40f86.appspot.com",
+  messagingSenderId: "82518374928",
+  appId: "1:82518374928:web:bab204014ff0fa22eea895",
+  measurementId: "G-Q5SMF2EPG6",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 // Vue router
 import * as VueRouter from "vue-router";
 
@@ -23,7 +46,8 @@ const vuetify = createVuetify({
 });
 
 const routes = [
-  { path: "/", name: "Home", component: Home },
+  { path: "/", name: "Login", component: Login },
+  { path: "/home", name: "Home", component: Home },
   { path: "/about", component: About },
   { path: "/new-subcription", component: NewSubscription },
 ];
