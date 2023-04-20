@@ -47,7 +47,12 @@ const vuetify = createVuetify({
 
 const routes = [
   { path: "/", name: "Login", component: Login },
-  { path: "/home", name: "Home", component: Home },
+  {
+    path: "/home",
+    name: "Home",
+    component: Home,
+    meta: { requiresAuth: true },
+  },
   { path: "/about", component: About },
   { path: "/new-subcription", component: NewSubscription },
 ];
@@ -55,6 +60,16 @@ const routes = [
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
+  const requiresGuest = to.matched.some((x) => x.meta.requiresGuest);
+
+  if (requiresAuth) {
+    console.log("this page requires authentication");
+    next(true);
+  }
 });
 
 createApp(App).use(vuetify).use(router).mount("#app");
