@@ -46,15 +46,19 @@ const vuetify = createVuetify({
 });
 
 const routes = [
-  { path: "/", name: "Login", component: Login },
+  { path: "/", name: "Login", component: Login, meta: { requiresAuth: false } },
   {
     path: "/home",
     name: "Home",
     component: Home,
     meta: { requiresAuth: true },
   },
-  { path: "/about", component: About },
-  { path: "/new-subcription", component: NewSubscription },
+  { path: "/about", component: About, meta: { requiresAuth: true } },
+  {
+    path: "/new-subcription",
+    component: NewSubscription,
+    meta: { requiresAuth: true },
+  },
 ];
 
 const router = VueRouter.createRouter({
@@ -64,10 +68,10 @@ const router = VueRouter.createRouter({
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
-  const requiresGuest = to.matched.some((x) => x.meta.requiresGuest);
 
   if (requiresAuth) {
     console.log("this page requires authentication");
+  } else {
     next(true);
   }
 });
