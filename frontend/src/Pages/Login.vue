@@ -1,15 +1,23 @@
 <script setup lang="ts">
+import { useAuthenticationStore } from "../stores/AuthenticationStore";
+
 import Header from "../components/Header.vue";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useRouter } from "vue-router";
 
 const provider = new GoogleAuthProvider();
 
 const auth = getAuth();
 
+const router = useRouter();
+
 const handleLogin = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log("Sign in successfully");
+      const store = useAuthenticationStore();
+      store.login();
+
+      router.push("/home");
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;

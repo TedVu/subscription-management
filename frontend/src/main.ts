@@ -1,6 +1,11 @@
 // Vue
 import { createApp } from "vue";
 import App from "./App.vue";
+
+// pinia - state management
+import { createPinia, storeToRefs } from "pinia";
+import { useAuthenticationStore } from "./stores/AuthenticationStore";
+
 // Pages
 import About from "./Pages/About.vue";
 import Home from "./Pages/Home.vue";
@@ -66,14 +71,22 @@ const router = VueRouter.createRouter({
   routes,
 });
 
+const pinia = createPinia();
+
+createApp(App).use(vuetify).use(router).use(pinia).mount("#app");
+
+const store = useAuthenticationStore();
+
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
 
   if (requiresAuth) {
-    console.log("this page requires authentication");
+    if (store.isLogin === true) {
+      next(true);
+    } else {
+      next(false);
+    }
   } else {
     next(true);
   }
 });
-
-createApp(App).use(vuetify).use(router).mount("#app");

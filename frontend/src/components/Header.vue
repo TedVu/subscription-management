@@ -11,8 +11,8 @@ const handleNavigation = (page: String) => {
     router.push("/about");
   } else if (page == "NewSubcription") {
     router.push("/new-subcription");
-  } else {
-    router.push("/");
+  } else if (page == "Home") {
+    router.push("/home");
   }
 };
 </script>
