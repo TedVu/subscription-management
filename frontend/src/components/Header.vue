@@ -10,12 +10,17 @@ const router = useRouter();
 const store = useAuthenticationStore();
 
 const handleNavigation = (page: String) => {
-  if (page == "About") {
+  if (page === "About") {
     router.push("/about");
-  } else if (page == "NewSubcription") {
+  } else if (page === "NewSubcription") {
     router.push("/new-subcription");
-  } else if (page == "Home") {
+  } else if (page === "Home") {
     router.push("/home");
+  } else {
+    if (page === "Logout") {
+      store.logout();
+    }
+    router.push("/");
   }
 };
 </script>
@@ -55,6 +60,12 @@ const handleNavigation = (page: String) => {
           title="New Subscription"
           value="New Subscription"
           @click="handleNavigation('NewSubcription')"
+        ></v-list-item>
+        <v-list-item
+          prepend-icon="mdi-logout"
+          title="Logout"
+          value="Logout"
+          @click="handleNavigation('Logout')"
         ></v-list-item>
       </v-list>
     </v-navigation-drawer>
