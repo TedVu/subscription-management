@@ -36,7 +36,7 @@ const vuetify = createVuetify({
 
 const routes = [
   {
-    path: "/login",
+    path: "/",
     name: "Login",
     component: Login,
     meta: { requiresAuth: false, loginPage: true },
@@ -73,15 +73,23 @@ const store = useAuthenticationStore();
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
+  const isLoginPage = to.matched.some((x) => x.meta.loginPage);
 
   if (requiresAuth) {
     if (store.isLogin === true) {
       next(true);
     } else {
-      next(false);
-      router.push("/Error");
+      router.push("/error");
     }
   } else {
-    next(true);
+    if (isLoginPage) {
+      if (store.isLogin === true) {
+        router.push("/home");
+      } else {
+        next(true);
+      }
+    } else {
+      next(true);
+    }
   }
 });

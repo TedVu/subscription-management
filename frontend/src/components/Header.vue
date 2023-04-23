@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAuthenticationStore } from "../stores/AuthenticationStore";
 
 const drawer = ref(false);
 
 const router = useRouter();
+
+const store = useAuthenticationStore();
 
 const handleNavigation = (page: String) => {
   if (page == "About") {
@@ -20,7 +23,10 @@ const handleNavigation = (page: String) => {
 <template>
   <v-layout>
     <v-app-bar color="info" density="comfortable">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        v-if="store.isLogin === true"
+        @click.stop="drawer = !drawer"
+      ></v-app-bar-nav-icon>
       <v-app-bar-title>Subscription Management Application</v-app-bar-title>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" temporary>
