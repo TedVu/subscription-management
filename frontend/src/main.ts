@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { createPinia } from "pinia";
 import { useAuthenticationStore } from "./stores/AuthenticationStore";
+import piniaPluginPersistedState from "pinia-plugin-persistedstate";
 import About from "./Pages/About.vue";
 import Home from "./Pages/Home.vue";
 import Login from "./Pages/Login.vue";
@@ -66,12 +67,13 @@ const router = VueRouter.createRouter({
 });
 
 const pinia = createPinia();
+pinia.use(piniaPluginPersistedState);
 
 createApp(App).use(vuetify).use(router).use(pinia).mount("#app");
 
-const store = useAuthenticationStore();
-
 router.beforeEach((to, from, next) => {
+  const store = useAuthenticationStore();
+
   const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
   const isLoginPage = to.matched.some((x) => x.meta.loginPage);
 

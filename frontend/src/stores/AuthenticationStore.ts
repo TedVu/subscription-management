@@ -10,4 +10,5 @@ export const useAuthenticationStore = defineStore("authentication", {
       this.isLogin = false;
     },
   },
+  persist: true,
 });
