@@ -16,6 +16,8 @@ import "@mdi/font/css/materialdesignicons.css";
 import "./style.css";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC85KMacum02NekX0TXG34LIEJRyNoqcW8",
@@ -69,7 +71,12 @@ const router = VueRouter.createRouter({
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);
 
-createApp(App).use(vuetify).use(router).use(pinia).mount("#app");
+createApp(App)
+  .component("VueDatePicker", VueDatePicker)
+  .use(vuetify)
+  .use(router)
+  .use(pinia)
+  .mount("#app");
 
 router.beforeEach((to, from, next) => {
   const store = useAuthenticationStore();
