@@ -10,6 +10,7 @@ import { useFirebaseDataStore } from "../firebase";
 const name = ref("");
 const date = ref(null);
 const loading = ref(false);
+const snackbar = ref(false);
 
 const nameRules = [
   (name: String) => {
@@ -28,6 +29,7 @@ const submit = async () => {
   });
   console.log("Document written with ID: ", docRef.id);
   loading.value = false;
+  snackbar.value = true;
 };
 </script>
 
@@ -49,5 +51,8 @@ const submit = async () => {
 
       <v-btn :loading="loading" type="submit" block class="mt-2">Submit</v-btn>
     </v-form>
+    <v-snackbar v-model="snackbar">
+      {{ "Adding new subscription successful!" }}</v-snackbar
+    >
   </v-sheet>
 </template>
