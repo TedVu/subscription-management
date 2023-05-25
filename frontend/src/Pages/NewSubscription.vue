@@ -4,6 +4,8 @@ import { ref } from "vue";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { enAU } from "date-fns/locale";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { useFirebaseDataStore } from "../firebase";
 
 const name = ref("");
 const date = ref(null);
@@ -18,7 +20,14 @@ const nameRules = [
 ];
 
 const submit = async () => {
-  // submit to server
+  loading.value = true;
+  const { db } = useFirebaseDataStore();
+  const docRef = await addDoc(collection(db, "subscriptions"), {
+    name: name.value,
+    date: date.value,
+  });
+  console.log("Document written with ID: ", docRef.id);
+  loading.value = false;
 };
 </script>
 
