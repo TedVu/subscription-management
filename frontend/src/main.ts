@@ -14,24 +14,13 @@ import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import "@mdi/font/css/materialdesignicons.css";
 import "./style.css";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
+import { initFirebase } from "./firebase";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC85KMacum02NekX0TXG34LIEJRyNoqcW8",
-  authDomain: "subscription-management-40f86.firebaseapp.com",
-  projectId: "subscription-management-40f86",
-  storageBucket: "subscription-management-40f86.appspot.com",
-  messagingSenderId: "82518374928",
-  appId: "1:82518374928:web:bab204014ff0fa22eea895",
-  measurementId: "G-Q5SMF2EPG6",
-};
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 import * as VueRouter from "vue-router";
 
+initFirebase();
 const vuetify = createVuetify({
   components,
   directives,
