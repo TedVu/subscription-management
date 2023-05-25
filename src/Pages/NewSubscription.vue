@@ -36,7 +36,7 @@ const submit = async () => {
 <template>
     <Header />
     <v-sheet width="300" class="mx-auto">
-        <v-form fast-fail validate-on="submit lazy" @submit.prevent="submit">
+        <v-form fast-fail validate-on="submit" @submit.prevent="submit">
             <v-text-field
                 v-model="name"
                 label="Subscription name"
