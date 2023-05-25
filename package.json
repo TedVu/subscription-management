@@ -18,6 +18,7 @@
         "pinia": "^2.0.35",
         "pinia-plugin-persistedstate": "^3.1.0",
         "vue": "^3.2.45",
+        "vue-eslint-parser": "^9.3.0",
         "vue-router": "^4.1.6",
         "vuetify": "^3.1.6"
     },
