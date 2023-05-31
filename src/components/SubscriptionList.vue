@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SubscriptionCard from "./SubscriptionCard.vue";
-import { Card } from "./types";
-import { PropType } from "vue";
+import SubscriptionCard from './SubscriptionCard.vue';
+import { Card } from './types';
+import { PropType } from 'vue';
 
 defineProps({
   subscriptionItems: Array as PropType<Card[]>,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { useAuthenticationStore } from "../stores/AuthenticationStore";
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthenticationStore } from '../stores/AuthenticationStore';
 
 const drawer = ref(false);
 
@@ -9,18 +9,18 @@ const router = useRouter();
 
 const store = useAuthenticationStore();
 
-const handleNavigation = (page: String) => {
-  if (page === "About") {
-    router.push("/about");
-  } else if (page === "NewSubcription") {
-    router.push("/new-subcription");
-  } else if (page === "Home") {
-    router.push("/home");
+const handleNavigation = (page: string) => {
+  if (page === 'About') {
+    router.push('/about');
+  } else if (page === 'NewSubcription') {
+    router.push('/new-subcription');
+  } else if (page === 'Home') {
+    router.push('/home');
   } else {
-    if (page === "Logout") {
+    if (page === 'Logout') {
       store.logout();
     }
-    router.push("/");
+    router.push('/');
   }
 };
 </script>
