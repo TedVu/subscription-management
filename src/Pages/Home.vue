@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import Header from "../components/Header.vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
 import { Card } from "../components/types";
 import SubscriptionList from "../components/SubscriptionList.vue";
 import { useFirebaseDataStore } from "../firebase";
@@ -37,6 +37,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <Header />
+  <HeaderComponent />
   <SubscriptionList :subscription-items="subscriptionItems" />
 </template>

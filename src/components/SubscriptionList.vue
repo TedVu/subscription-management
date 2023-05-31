@@ -4,7 +4,7 @@ import { Card } from "./types";
 import { PropType } from "vue";
 
 defineProps({
-  subscriptionItems: Array as PropType<Card[]>,
+  subscriptionItems: { type: Array as PropType<Card[]>, default: () => [] },
 });
 </script>
 

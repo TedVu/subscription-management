@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuthenticationStore } from "../stores/AuthenticationStore";
 
-import Header from "../components/Header.vue";
+import HeaderComponent from "../components/HeaderComponent.vue";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "vue-router";
 
@@ -13,33 +13,19 @@ const router = useRouter();
 
 const handleLogin = () => {
   signInWithPopup(auth, provider)
-    .then((result) => {
+    .then(() => {
       const store = useAuthenticationStore();
       store.login();
 
       router.push("/home");
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
     })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
+    .catch(() => {
+      console.error("Something went wrong during authentication");
     });
 };
 </script>
 
 <template>
-  <Header />
+  <HeaderComponent />
   <v-btn variant="outlined" @click="handleLogin"> Login with Google </v-btn>
 </template>
