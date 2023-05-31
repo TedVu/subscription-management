@@ -22,72 +22,72 @@ import * as VueRouter from "vue-router";
 
 initFirebase();
 const vuetify = createVuetify({
-  components,
-  directives,
+    components,
+    directives,
 });
 
 const routes = [
-  {
-    path: "/",
-    name: "Login",
-    component: Login,
-    meta: { requiresAuth: false, loginPage: true },
-  },
-  {
-    path: "/home",
-    name: "Home",
-    component: Home,
-    meta: { requiresAuth: true },
-  },
-  { path: "/about", component: About, meta: { requiresAuth: true } },
-  {
-    path: "/new-subcription",
-    component: NewSubscription,
-    meta: { requiresAuth: true },
-  },
-  {
-    path: "/error",
-    component: Error,
-    meta: { requiresAuth: false },
-  },
+    {
+        path: "/",
+        name: "Login",
+        component: Login,
+        meta: { requiresAuth: false, loginPage: true },
+    },
+    {
+        path: "/home",
+        name: "Home",
+        component: Home,
+        meta: { requiresAuth: true },
+    },
+    { path: "/about", component: About, meta: { requiresAuth: true } },
+    {
+        path: "/new-subcription",
+        component: NewSubscription,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/error",
+        component: Error,
+        meta: { requiresAuth: false },
+    },
 ];
 
 const router = VueRouter.createRouter({
-  history: VueRouter.createWebHistory(),
-  routes,
+    history: VueRouter.createWebHistory(),
+    routes,
 });
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedState);
 
 createApp(App)
-  .component("VueDatePicker", VueDatePicker)
-  .use(vuetify)
-  .use(router)
-  .use(pinia)
-  .mount("#app");
+    .component("VueDatePicker", VueDatePicker)
+    .use(vuetify)
+    .use(router)
+    .use(pinia)
+    .mount("#app");
 
 router.beforeEach((to, from, next) => {
-  const store = useAuthenticationStore();
+    const store = useAuthenticationStore();
 
-  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
-  const isLoginPage = to.matched.some((x) => x.meta.loginPage);
+    const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
+    const isLoginPage = to.matched.some((x) => x.meta.loginPage);
 
-  if (requiresAuth) {
-    if (store.isLogin === true) {
-      next(true);
+    if (requiresAuth) {
+        if (store.isLogin === true) {
+            next(true);
+        } else {
+            router.push("/error");
+        }
     } else {
-      router.push("/error");
+        if (isLoginPage) {
+            if (store.isLogin === true) {
+                router.push("/home");
+            } else {
+                next(true);
+            }
+        } else {
+            next(true);
+        }
     }
-  } else {
-    if (isLoginPage) {
-      if (store.isLogin === true) {
-        router.push("/home");
-      } else {
-        next(true);
-      }
-    } else {
-      next(true);
-    }
-  }
 });

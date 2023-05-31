@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Card } from './types';
-import { PropType } from 'vue';
+import { Card } from "./types";
+import { PropType } from "vue";
 defineProps({
   card: { type: Object as PropType<Card>, default: null },
 });
