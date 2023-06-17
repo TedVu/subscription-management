@@ -1,13 +1,22 @@
 <script lang="ts" setup>
 import { Card } from "./types";
-import { PropType } from "vue";
+import { PropType, ref } from "vue";
+import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
 
+const snackbar = ref(false);
 const props = defineProps({
   card: { type: Object as PropType<Card>, default: null },
 });
 
 const handleDelete = () => {
   //delete
+  const store = useSubscriptionItemStore();
+  store.remove(props.card.id);
+  snackbar.value = true;
+
+  setTimeout(() => {
+    snackbar.value = false;
+  }, 3000);
 };
 </script>
 
@@ -30,6 +39,9 @@ const handleDelete = () => {
       <v-btn color="red" @click="handleDelete"> Delete </v-btn>
     </v-card-actions>
   </v-card>
+  <v-snackbar v-model="snackbar" color="error">
+    {{ "Delete a subscription successful!" }}
+  </v-snackbar>
 </template>
 
 <style></style>

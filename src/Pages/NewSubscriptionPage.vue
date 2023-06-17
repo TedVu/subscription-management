@@ -51,7 +51,7 @@ const submit = async () => {
 
       <v-btn :loading="loading" type="submit" block class="mt-2">Submit</v-btn>
     </v-form>
-    <v-snackbar v-model="snackbar">
+    <v-snackbar v-model="snackbar" color="success">
       {{ "Adding new subscription successful!" }}
     </v-snackbar>
   </v-sheet>
