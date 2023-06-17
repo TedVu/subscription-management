@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useFirebaseDataStore } from "../firebase";
-import { Timestamp, collection, getDocs } from "firebase/firestore";
+import { Timestamp, collection, getDocs, deleteDoc } from "firebase/firestore";
 import { Card } from "../components/types";
 
 export const useSubscriptionItemStore = defineStore("subscription-item", {
@@ -10,7 +10,8 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
     getters: {},
     actions: {
         remove(id: string) {
-            //
+            // delete
+            // refresh
         },
         add() {
             //

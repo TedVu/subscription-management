@@ -1,14 +1,13 @@
 <script lang="ts" setup>
 import { Card } from "./types";
 import { PropType } from "vue";
-defineProps({
+
+const props = defineProps({
   card: { type: Object as PropType<Card>, default: null },
-  delete: { type: Function, default: null },
 });
 
 const handleDelete = () => {
   //delete
-  //rerender the list
 };
 </script>
 
