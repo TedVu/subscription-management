@@ -3,7 +3,13 @@ import { Card } from "./types";
 import { PropType } from "vue";
 defineProps({
   card: { type: Object as PropType<Card>, default: null },
+  delete: { type: Function, default: null },
 });
+
+const handleDelete = () => {
+  //delete
+  //rerender the list
+};
 </script>
 
 <template>
@@ -22,6 +28,7 @@ defineProps({
     </v-card-text>
     <v-card-actions>
       <v-btn color="blue"> Details </v-btn>
+      <v-btn color="red" @click="handleDelete"> Delete </v-btn>
     </v-card-actions>
   </v-card>
 </template>
