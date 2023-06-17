@@ -20,6 +20,7 @@ defineProps({
         <v-sheet class="ma-2 pa-2">
           <SubscriptionCard
             :card="{
+              id: item.id,
               title: item.title,
               date: item.date,
               imageUrl: item.imageUrl,

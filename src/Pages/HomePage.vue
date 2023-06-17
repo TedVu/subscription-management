@@ -5,11 +5,10 @@ import { Card } from "../components/types";
 import SubscriptionList from "../components/SubscriptionList.vue";
 import { useFirebaseDataStore } from "../firebase";
 import { Timestamp, collection, getDocs } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
 const subscriptionItems = ref<Card[]>();
 onMounted(() => {
-  // fetch from database
-
   const { db } = useFirebaseDataStore();
   const colRef = collection(db, "subscriptions");
 
@@ -25,6 +24,7 @@ onMounted(() => {
 
       const name = doc.data().name;
       subscriptionItemsDB.push({
+        id: uuidv4(),
         title: name,
         date: date,
         imageUrl: "",
