@@ -5,7 +5,7 @@ A subscription management program which has these following features:
 
 - Support CRUD (Create, Read, Update, Delete) operation of a subscription.
 - Notify users through many channels. (browser, email, mobile phone)
-- Suggest good deals, browser for subscription and cost.
+- Suggest good deals, browse for subscription and cost.
 - Calculate the total subscription cost and have a dashboard visualization of the cost.
 
 
