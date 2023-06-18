@@ -29,12 +29,6 @@ Build a bundle file for production
   npm run build
 ```
 
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
 ## 🛠 Tech Stacks
 
 ### Frontend
@@ -44,4 +38,8 @@ Build a bundle file for production
 
 ### Backend
 - Use Firebase as a Backend-as-a-Service
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
