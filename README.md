@@ -1,9 +1,17 @@
 
+# To do
+
+- Fix display subscription card when there is only one subscription
+- Recheck authentication logic
+- Implement update action including adding a details page
+
 # Subscription Management
 
 A subscription management program which has these following features:
 
 - Support CRUD (Create, Read, Update, Delete) operation of a subscription.
+- Filter / Sort subscription
+- Subscription pagination
 - Notify users through many channels. (browser, email, mobile phone)
 - Suggest good deals, browse for subscription and cost.
 - Calculate the total subscription cost and have a dashboard visualization of the cost.
@@ -42,4 +50,3 @@ Build a bundle file for production
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
