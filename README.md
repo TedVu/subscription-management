@@ -1,9 +1,10 @@
 
-# To do
+# TO DO
 
-- Fix display subscription card when there is only one subscription
-- Recheck authentication logic
-- Implement update action including adding a details page
+- DEFECT: Fix display subscription card when there is only one subscription
+- DEFECT: Refresh rate when deleting a subscription item is not consistent
+- FEATURE: Recheck authentication logic
+- FEATURE: Implement update action including adding a details page
 
 # Subscription Management
 
