@@ -11,6 +11,8 @@ const name = ref("");
 const date = ref(null);
 const loading = ref(false);
 const snackbar = ref(false);
+const snackbarMsg = ref("");
+const snackbarColor = ref("");
 
 const nameRules = [
   (name: string) => {
@@ -20,23 +22,43 @@ const nameRules = [
   },
 ];
 
+const isAllDataCorrect = () => {
+  let isCorrect = true;
+
+  if (name.value.length < 3) {
+    isCorrect = false;
+  }
+
+  if (date.value === null) {
+    isCorrect = false;
+  }
+  return isCorrect;
+};
+
 const submit = async () => {
-  loading.value = true;
-  const { db } = useFirebaseDataStore();
-  const docRef = await addDoc(collection(db, "subscriptions"), {
-    name: name.value,
-    date: date.value,
-  });
-  console.log("Document written with ID: ", docRef.id);
-  loading.value = false;
-  snackbar.value = true;
+  if (isAllDataCorrect()) {
+    loading.value = true;
+    const { db } = useFirebaseDataStore();
+    await addDoc(collection(db, "subscriptions"), {
+      name: name.value,
+      date: date.value,
+    });
+    loading.value = false;
+    snackbar.value = true;
+    snackbarMsg.value = "Adding new subscription successful!";
+    snackbarColor.value = "success";
+  } else {
+    snackbar.value = true;
+    snackbarMsg.value = "Adding new subscription failed!";
+    snackbarColor.value = "red-darken-2";
+  }
 };
 </script>
 
 <template>
   <HeaderComponent />
   <v-sheet width="300" class="mx-auto">
-    <v-form fast-fail validate-on="submit lazy" @submit.prevent="submit">
+    <v-form fast-fail validate-on="blur" @submit.prevent="submit">
       <v-text-field
         v-model="name"
         label="Subscription name"
@@ -46,13 +68,16 @@ const submit = async () => {
         v-model="date"
         :enable-time-picker="false"
         :format-locale="enAU"
+        :clearable="true"
+        placeholder="Select Date"
+        required
         format="dd/MM/yyyy"
       />
 
       <v-btn :loading="loading" type="submit" block class="mt-2">Submit</v-btn>
     </v-form>
-    <v-snackbar v-model="snackbar" color="success">
-      {{ "Adding new subscription successful!" }}
+    <v-snackbar v-model="snackbar" color="snackbarColor">
+      {{ snackbarMsg }}
     </v-snackbar>
   </v-sheet>
 </template>

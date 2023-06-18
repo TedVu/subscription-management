@@ -21,7 +21,7 @@ const handleDelete = () => {
 </script>
 
 <template>
-  <v-card class="mx-auto" max-width="600">
+  <v-card class="mx-auto" max-width="600" min-width="350">
     <v-img
       class="align-end text-black"
       height="200"

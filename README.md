@@ -1,8 +1,11 @@
 
 # TO DO
 
-- DEFECT: Fix display subscription card when there is only one subscription
+- DEFECT: Fix display subscription card when there is only one subscription [X]
 - DEFECT: Refresh rate when deleting a subscription item is not consistent
+- DEFECT: Render an item without data causes error, we should handle this case gracefully
+- DEFECT: Saving doesn't hot reload
+- FEATURE: Improve DX with Volar
 - FEATURE: Recheck authentication logic
 - FEATURE: Implement update action including adding a details page
 
