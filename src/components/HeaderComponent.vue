@@ -1,30 +1,31 @@
 <script lang="ts" setup>
-import { ref } from "vue"
-import { useRouter } from "vue-router"
-import { useAuthenticationStore } from "../stores/AuthenticationStore"
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthenticationStore } from "../stores/AuthenticationStore";
 
-const drawer = ref(false)
+const drawer = ref(false);
 
-const router = useRouter()
+const router = useRouter();
 
-const store = useAuthenticationStore()
+const store = useAuthenticationStore();
 
 const handleNavigation = (page: string) => {
   switch (page) {
     case "About":
-      router.push("/about")
-      break
+      router.push("/about");
+      break;
     case "NewSubcription":
-      router.push("/new-subcription")
-      break
+      router.push("/new-subcription");
+      break;
     case "Home":
-      router.push("/home")
-      break
+      router.push("/home");
+      break;
     default:
-      store.logout()
-      break
+      store.logout();
+      router.push("/");
+      break;
   }
-}
+};
 </script>
 
 <template>
