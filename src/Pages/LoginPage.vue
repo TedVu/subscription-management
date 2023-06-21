@@ -27,5 +27,12 @@ const handleLogin = () => {
 
 <template>
   <HeaderComponent />
-  <v-btn variant="outlined" @click="handleLogin"> Login with Google </v-btn>
+  <v-btn :width="300" :height="50" variant="outlined" @click="handleLogin">
+    <v-img
+      :width="300"
+      :height="50"
+      cover
+      src="../../assets/signin.png"
+    ></v-img>
+  </v-btn>
 </template>

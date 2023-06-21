@@ -5,10 +5,13 @@
 - DEFECT: Refresh rate when deleting a subscription item is not consistent
 - DEFECT: Render an item without data causes error, we should handle this case gracefully
 - DEFECT: Saving doesn't hot reload
-- FEATURE: Improve logout experience
-- FEATURE: Improve DX with Volar
+- FEATURE: Improve logout experience [X]
 - FEATURE: Recheck authentication logic [X]
+- FEATURE: Improve DX with Volar
 - FEATURE: Implement update action including adding a details page
+- FEATURE: When users enter an unconfigured route we should route to not found page
+- FEATURE: Dockerize the application
+
 
 # Subscription Management
 
