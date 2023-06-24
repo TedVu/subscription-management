@@ -46,7 +46,7 @@ const routes = [
         meta: { requiresAuth: true },
     },
     {
-        path: "/error",
+        path: "/:pathMatch(.*)*",
         component: Error,
         meta: { requiresAuth: false },
     },
@@ -72,7 +72,6 @@ router.beforeEach((to, from, next) => {
 
     const requiresAuth = to.matched.some((x) => x.meta.requiresAuth);
     const isLoginPage = to.matched.some((x) => x.meta.loginPage);
-
     if (requiresAuth) {
         if (store.isLogin === true) {
             next(true);

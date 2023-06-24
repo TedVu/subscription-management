@@ -2,5 +2,5 @@
 
 <template>
   <Header />
-  <div>401 Unauthorized</div>
+  <div>404 Not Found Page</div>
 </template>
