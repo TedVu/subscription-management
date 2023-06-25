@@ -5,6 +5,12 @@ import { useAuthenticationStore } from "../stores/AuthenticationStore";
 
 const drawer = ref(false);
 
+const computeActiveState = (item: string) => {
+  console.log(`Item is ${JSON.stringify(item)}`);
+  console.log(`Route is ${JSON.stringify(router.currentRoute.value)}`);
+  return item === router.currentRoute.value.path;
+};
+
 const router = useRouter();
 
 const store = useAuthenticationStore();
@@ -47,18 +53,21 @@ const handleNavigation = (page: string) => {
 
       <v-list density="compact" nav>
         <v-list-item
+          :active="computeActiveState('/home')"
           prepend-icon="mdi-view-dashboard"
           title="Home"
           value="home"
           @click="handleNavigation('Home')"
         />
         <v-list-item
+          :active="computeActiveState('/about')"
           prepend-icon="mdi-forum"
           title="About"
           value="about"
           @click="handleNavigation('About')"
         />
         <v-list-item
+          :active="computeActiveState('/new-subcription')"
           prepend-icon="mdi-account"
           title="New Subscription"
           value="New Subscription"
