@@ -32,7 +32,7 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
             //
         },
         update(id: string) {
-            //
+            // change
         },
         getSubscriptionItemsFromServer() {
             const { db } = useFirebaseDataStore();
