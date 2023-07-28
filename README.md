@@ -1,25 +1,3 @@
-
-# TO DO
-
-- DEFECT: Fix display subscription card when there is only one subscription [X]
-- DEFECT: Refresh rate when deleting a subscription item is not consistent
-- DEFECT: Render an item without data causes error, we should handle this case gracefully
-- DEFECT: Saving doesn't hot reload, maybe some problem with file extension detection
-
-
-## Customer facing features
-- FEATURE: Improve logout experience [X]
-- FEATURE: Recheck authentication logic [X]
-- FEATURE: When users enter an unconfigured route we should route to not found page [X]
-- FEATURE: Menu bar on the side showing the current page [X]
-- FEATURE: Implement update action including adding a details page
-- FEATURE: Allow updating image when adding a new subscription
-## Technical features
-- FEATURE: Improve DX with Volar
-- FEATURE: Dockerize the application
-
-
-
 # Subscription Management
 
 A subscription management program which has these following features:
@@ -61,6 +39,26 @@ Build a bundle file for production
 
 ### Backend
 - Use Firebase as a Backend-as-a-Service
+
+# TO DO
+
+
+- DEFECT: Fix display subscription card when there is only one subscription [X]
+- DEFECT: Refresh rate when deleting a subscription item is not consistent
+- DEFECT: Render an item without data causes error, we should handle this case gracefully
+- DEFECT: Saving doesn't hot reload, maybe some problem with file extension detection
+
+
+## Customer facing features
+- FEATURE: Improve logout experience [X]
+- FEATURE: Recheck authentication logic [X]
+- FEATURE: When users enter an unconfigured route we should route to not found page [X]
+- FEATURE: Menu bar on the side showing the current page [X]
+- FEATURE: Implement update action including adding a details page
+- FEATURE: Allow updating image when adding a new subscription
+## Technical features
+- FEATURE: Improve DX with Volar
+- FEATURE: Dockerize the application
 
 ## License
 
