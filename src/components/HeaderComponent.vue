@@ -6,8 +6,6 @@ import { useAuthenticationStore } from "../stores/AuthenticationStore";
 const drawer = ref(false);
 
 const computeActiveState = (item: string) => {
-  console.log(`Item is ${JSON.stringify(item)}`);
-  console.log(`Route is ${JSON.stringify(router.currentRoute.value)}`);
   return item === router.currentRoute.value.path;
 };
 
@@ -55,7 +53,7 @@ const handleNavigation = (page: string) => {
         <v-list-item
           :active="computeActiveState('/home')"
           prepend-icon="mdi-view-dashboard"
-          title="Home"
+          title="Home" 
           value="home"
           @click="handleNavigation('Home')"
         />
