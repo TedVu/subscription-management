@@ -73,6 +73,11 @@ const submit = async () => {
         required
         format="dd/MM/yyyy"
       />
+      <v-file-input
+        accept="image/*"
+        label="File input"
+        class="mt-10"
+      ></v-file-input>
 
       <v-btn :loading="loading" type="submit" block class="mt-2">Submit</v-btn>
     </v-form>

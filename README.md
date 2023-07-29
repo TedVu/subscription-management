@@ -46,7 +46,7 @@ Build a bundle file for production
 - DEFECT: Fix display subscription card when there is only one subscription [X]
 - DEFECT: Refresh rate when deleting a subscription item is not consistent
 - DEFECT: Render an item without data causes error, we should handle this case gracefully
-- DEFECT: Saving doesn't hot reload, maybe some problem with file extension detection
+- DEFECT: Saving doesn't hot reload, maybe some problem with file extension detection [X] 
 
 
 ## Customer facing features
