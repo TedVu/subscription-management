@@ -46,11 +46,11 @@ const submit = async () => {
     uploadFiles(images.value[0]);
     loading.value = false;
     snackbar.value = true;
-    snackbarMsg.value = "Adding new subscription successful!";
+    snackbarMsg.value = "Adding a new subscription successful!";
     snackbarColor.value = "success";
   } else {
     snackbar.value = true;
-    snackbarMsg.value = "Adding new subscription failed!";
+    snackbarMsg.value = "Adding a new subscription failed!";
     snackbarColor.value = "red-darken-2";
   }
 };
