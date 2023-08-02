@@ -1,5 +1,6 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC85KMacum02NekX0TXG34LIEJRyNoqcW8",
@@ -23,4 +24,14 @@ const useFirebaseDataStore = () => {
     };
 };
 
-export { initFirebase, useFirebaseDataStore };
+const uploadFiles = (file: File) => {
+    const storage = getStorage(app);
+    const storageRef = ref(storage, "images/stars.jpg");
+
+    // 'file' comes from the Blob or File API
+    uploadBytes(storageRef, file).then((snapshot) => {
+        console.log("Uploaded a blob or file!");
+    });
+};
+
+export { initFirebase, useFirebaseDataStore, uploadFiles };

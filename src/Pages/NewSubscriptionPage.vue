@@ -5,10 +5,11 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { enAU } from "date-fns/locale";
 import { collection, addDoc } from "firebase/firestore";
-import { useFirebaseDataStore } from "../firebase";
+import { useFirebaseDataStore, uploadFiles } from "../firebase";
 
 const name = ref("");
 const date = ref(null);
+const images = ref([]);
 const loading = ref(false);
 const snackbar = ref(false);
 const snackbarMsg = ref("");
@@ -16,7 +17,7 @@ const snackbarColor = ref("");
 
 const nameRules = [
   (name: string) => {
-    if (name?.length > 3) return true;
+    if (name?.length >= 3) return true;
 
     return "Subscription name must be at least 3 characters.";
   },
@@ -24,7 +25,6 @@ const nameRules = [
 
 const isAllDataCorrect = () => {
   let isCorrect = true;
-
   if (name.value.length < 3) {
     isCorrect = false;
   }
@@ -43,6 +43,7 @@ const submit = async () => {
       name: name.value,
       date: date.value,
     });
+    uploadFiles(images.value[0]);
     loading.value = false;
     snackbar.value = true;
     snackbarMsg.value = "Adding new subscription successful!";
@@ -74,9 +75,11 @@ const submit = async () => {
         format="dd/MM/yyyy"
       />
       <v-file-input
-        accept="image/*"
+        v-model="images"
+        accept="image/jpg, image/png, image/jpeg"
         label="File input"
-        class="mt-10"
+        class="mt-5"
+        prepend-icon="mdi-camera"
       ></v-file-input>
 
       <v-btn :loading="loading" type="submit" block class="mt-2">Submit</v-btn>
