@@ -43,7 +43,9 @@ const submit = async () => {
       name: name.value,
       date: date.value,
     });
-    uploadFiles(images.value[0]);
+
+    const uniqueFilename = buildUniqueFilename(name.value, date.value);
+    uploadFiles(images.value[0], uniqueFilename);
     loading.value = false;
     snackbar.value = true;
     snackbarMsg.value = "Adding a new subscription successful!";
@@ -53,6 +55,12 @@ const submit = async () => {
     snackbarMsg.value = "Adding a new subscription failed!";
     snackbarColor.value = "red-darken-2";
   }
+};
+
+const buildUniqueFilename = (name: string, date: Date | null) => {
+  const dateStr = date?.toISOString().split("T")[0];
+  const nameStr = name.replace(/\s/g, "-");
+  return `${nameStr}-${dateStr}`;
 };
 </script>
 
