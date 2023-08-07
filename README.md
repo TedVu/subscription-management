@@ -55,7 +55,7 @@ Build a bundle file for production
 - FEATURE: When users enter an unconfigured route we should route to not found page [X]
 - FEATURE: Menu bar on the side showing the current page [X]
 - FEATURE: Implement update action including adding a details page
-- FEATURE: Allow updating image when adding a new subscription
+- FEATURE: Allow updating image when adding a new subscription [X]
 ## Technical features
 - FEATURE: Improve DX with Volar
 - FEATURE: Dockerize the application
