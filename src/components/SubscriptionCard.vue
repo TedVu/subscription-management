@@ -29,8 +29,8 @@ const handleDelete = () => {
       :src="`${card?.imageUrl}`"
       cover
     >
-      <v-card-title>{{ card?.title }}</v-card-title>
     </v-img>
+    <v-card-title>{{ card?.title }}</v-card-title>
     <v-card-text>
       <div>Subscribed on {{ card?.date }}</div>
     </v-card-text>
