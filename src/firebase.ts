@@ -1,6 +1,6 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC85KMacum02NekX0TXG34LIEJRyNoqcW8",
@@ -36,4 +36,43 @@ const uploadFiles = (file: File, uniqueFilename: string) => {
     });
 };
 
-export { initFirebase, useFirebaseDataStore, uploadFiles };
+const getSubscriptionImageUrl = (
+    storageLocation: string
+): Promise<string | void> => {
+    const storage = getStorage(app);
+    const storageRef = ref(storage, storageLocation);
+    // Get the download URL
+    return getDownloadURL(storageRef)
+        .then((url) => {
+            // Insert url into an <img> tag to "download"
+            return url;
+        })
+        .catch((error) => {
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+                case "storage/object-not-found":
+                    // File doesn't exist
+                    break;
+
+                case "storage/unauthorized":
+                    // User doesn't have permission to access the object
+                    break;
+
+                case "storage/canceled":
+                    // User canceled the upload
+                    break;
+
+                case "storage/unknown":
+                    // Unknown error occurred, inspect the server response
+                    break;
+            }
+        });
+};
+
+export {
+    initFirebase,
+    useFirebaseDataStore,
+    uploadFiles,
+    getSubscriptionImageUrl,
+};

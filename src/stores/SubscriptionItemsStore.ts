@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-import { useFirebaseDataStore } from "../firebase";
+import { buildUniqueFilename } from "../services/FileService";
+import { useFirebaseDataStore, getSubscriptionImageUrl } from "../firebase";
 import {
     Timestamp,
     collection,
@@ -35,11 +36,11 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
             // change
         },
         getSubscriptionItemsFromServer() {
+            this.subscriptionItems = [];
             const { db } = useFirebaseDataStore();
             const colRef = collection(db, "subscriptions");
-            const subscriptionItemsDB: Card[] = [];
             getDocs(colRef).then((snapshots) => {
-                snapshots.docs.forEach((doc) => {
+                snapshots.docs.forEach(async (doc) => {
                     const date = new Timestamp(
                         doc.data().date.seconds,
                         doc.data().date.nanoseconds
@@ -49,15 +50,24 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
 
                     const name = doc.data().name;
                     const id = doc.id;
-                    subscriptionItemsDB.push({
+
+                    const storageLocation = `images/${buildUniqueFilename(
+                        name,
+                        new Timestamp(
+                            doc.data().date.seconds,
+                            doc.data().date.nanoseconds
+                        ).toDate()
+                    )}.jpg`;
+                    const imageUrl = await getSubscriptionImageUrl(
+                        storageLocation
+                    );
+                    this.subscriptionItems.push({
                         id: id,
                         title: name,
                         date: date,
-                        imageUrl: "",
+                        imageUrl: imageUrl,
                     });
                 });
-
-                this.subscriptionItems = subscriptionItemsDB;
             });
         },
     },

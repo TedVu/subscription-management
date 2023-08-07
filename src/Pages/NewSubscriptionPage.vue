@@ -6,6 +6,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
 import { enAU } from "date-fns/locale";
 import { collection, addDoc } from "firebase/firestore";
 import { useFirebaseDataStore, uploadFiles } from "../firebase";
+import { buildUniqueFilename } from "../services/fileService";
 
 const name = ref("");
 const date = ref(null);
@@ -56,12 +57,6 @@ const submit = async () => {
     snackbarColor.value = "red-darken-2";
   }
 };
-
-const buildUniqueFilename = (name: string, date: Date | null) => {
-  const dateStr = date?.toISOString().split("T")[0];
-  const nameStr = name.replace(/\s/g, "-");
-  return `${nameStr}-${dateStr}`;
-};
 </script>
 
 <template>
@@ -97,3 +92,4 @@ const buildUniqueFilename = (name: string, date: Date | null) => {
     </v-snackbar>
   </v-sheet>
 </template>
+../services/fileService
