@@ -30,10 +30,10 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
             });
         },
         add() {
-            //
+            // TO BE IMPLEMENTED
         },
         update(id: string) {
-            // change
+            // TO BE IMPLEMENTED
         },
         getSubscriptionItemsFromServer() {
             this.subscriptionItems = [];
