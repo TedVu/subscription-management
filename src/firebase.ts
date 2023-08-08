@@ -31,9 +31,7 @@ const uploadFiles = (file: File, uniqueFilename: string) => {
     const storageRef = ref(storage, `images/${fullFilename}`);
 
     // 'file' comes from the Blob or File API
-    uploadBytes(storageRef, file).then((snapshot) => {
-        console.log("Uploaded a blob or file!");
-    });
+    uploadBytes(storageRef, file);
 };
 
 const getSubscriptionImageUrl = (

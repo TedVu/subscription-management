@@ -79,7 +79,7 @@ const submit = async () => {
       />
       <v-file-input
         v-model="images"
-        accept="image/jpg, image/png, image/jpeg"
+        accept="image/png"
         label="File input"
         class="mt-5"
         prepend-icon="mdi-camera"

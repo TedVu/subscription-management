@@ -57,7 +57,7 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
                             doc.data().date.seconds,
                             doc.data().date.nanoseconds
                         ).toDate()
-                    )}.jpg`;
+                    )}.png`;
                     const imageUrl = await getSubscriptionImageUrl(
                         storageLocation
                     );
