@@ -1,13 +1,13 @@
 # Subscription Management
 
-A subscription management program which has these following features:
+A subscription management program which will have these following features:
 
 - Support CRUD (Create, Read, Update, Delete) operation of a subscription.
 - Filter / Sort subscription
 - Subscription pagination
 - Notify users through many channels. (browser, email, mobile phone)
-- Suggest good deals, browse for subscription and cost.
-- Calculate the total subscription cost and have a dashboard visualization of the cost.
+- Suggest good deals, browse for subscriptions and cost.
+- Calculate the total subscription cost and have a visualization dashboard of the cost.
 
 
 
@@ -30,7 +30,7 @@ Build a bundle file for production
   npm run build
 ```
 
-## 🛠 Tech Stacks
+## Tech Stacks
 
 ### Frontend
 
