@@ -43,6 +43,7 @@ const submit = async () => {
     await addDoc(collection(db, "subscriptions"), {
       name: name.value,
       date: date.value,
+      imageExtension: (images.value[0] as File).name.split(".").pop(),
     });
 
     const uniqueFilename = buildUniqueFilename(name.value, date.value);
@@ -79,7 +80,7 @@ const submit = async () => {
       />
       <v-file-input
         v-model="images"
-        accept="image/png"
+        accept="image/png, image/jpeg, image/gif"
         label="File input"
         class="mt-5"
         prepend-icon="mdi-camera"
@@ -87,7 +88,7 @@ const submit = async () => {
 
       <v-btn :loading="loading" type="submit" block class="mt-2">Submit</v-btn>
     </v-form>
-    <v-snackbar v-model="snackbar" color="snackbarColor">
+    <v-snackbar v-model="snackbar" :color="snackbarColor">
       {{ snackbarMsg }}
     </v-snackbar>
   </v-sheet>

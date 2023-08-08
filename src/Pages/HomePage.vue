@@ -8,7 +8,6 @@ import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
 const store = useSubscriptionItemStore();
 onMounted(() => {
   store.getSubscriptionItemsFromServer();
-  console.log(`Subscription items length is ${subscriptionItems.value.length}`);
 });
 const { subscriptionItems } = storeToRefs(store);
 </script>

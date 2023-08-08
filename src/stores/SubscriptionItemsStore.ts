@@ -17,13 +17,9 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
     getters: {},
     actions: {
         remove(id: string) {
-            // delete
-            // refresh
-            console.log(`do something ${id}`);
             const { db } = useFirebaseDataStore();
             const docRef = doc(db, "subscriptions", id);
             deleteDoc(docRef).then(() => {
-                console.log("Delete successfully");
                 this.subscriptionItems = this.subscriptionItems.filter(
                     (item) => item.id !== id
                 );
@@ -57,7 +53,7 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
                             doc.data().date.seconds,
                             doc.data().date.nanoseconds
                         ).toDate()
-                    )}.png`;
+                    )}.${doc.data().imageExtension}`;
                     const imageUrl = await getSubscriptionImageUrl(
                         storageLocation
                     );
