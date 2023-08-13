@@ -14,10 +14,10 @@ const handleDelete = () => {
   const store = useSubscriptionItemStore();
   store.remove(props.card.id);
   snackbar.value = true;
+  dialog.value = false;
 
   setTimeout(() => {
     snackbar.value = false;
-    dialog.value = false;
   }, 3000);
 };
 </script>
