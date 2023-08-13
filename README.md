@@ -46,9 +46,9 @@ Build a bundle file for production
 - DEFECT: Fix display subscription card when there is only one subscription [X]
 - DEFECT: Saving doesn't hot reload, maybe some problem with file extension detection [X] 
 - DEFECT: Card title should be under the image [X]
-- DEFECT: Refresh rate when deleting a subscription item is not consistent
-- DEFECT: Render an item without data causes error, we should handle this case gracefully
-- DEFECT: Two images may be overlapped based on the name - as we are using name-date => we should use name-dateiso string instead
+- DEFECT: Refresh rate when deleting a subscription item is not consistent []
+- DEFECT: Render an item without data causes error, we should handle this case gracefully []
+- DEFECT: Two images may be overlapped based on the name - as we are using name-date => we should use name-dateiso string instead []
 
 ## Customer facing features
 - FEATURE: Improve logout experience [X]
@@ -58,11 +58,11 @@ Build a bundle file for production
 - FEATURE: Allow updating image when adding a new subscription [X]
 - FEATURE: Allow all types of graphical files to be uploaded [X]
 - FEATURE: Confirmation before executing delete operation []
-- FEATURE: Implement update action including adding a details page
+- FEATURE: Implement update action including adding a details page []
 
 ## Technical features
-- FEATURE: Improve DX with Volar
-- FEATURE: Dockerize the application
+- FEATURE: Improve DX with Volar []
+- FEATURE: Dockerize the application []
 
 ## Regular code cleanup
 - CLEANUP: Cleanup and refactor, consider applying any design pattern if necessary
