@@ -4,7 +4,8 @@ import { PropType, ref } from "vue";
 import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
 
 const snackbar = ref(false);
-const dialog = ref(false);
+const deleteDialog = ref(false);
+const detailsDialog = ref(false);
 const props = defineProps({
   card: { type: Object as PropType<Card>, default: null },
 });
@@ -14,7 +15,7 @@ const handleDelete = () => {
   const store = useSubscriptionItemStore();
   store.remove(props.card.id);
   snackbar.value = true;
-  dialog.value = false;
+  deleteDialog.value = false;
 
   setTimeout(() => {
     snackbar.value = false;
@@ -40,15 +41,18 @@ const handleDelete = () => {
       <v-btn color="blue"> Details </v-btn>
       <v-btn color="red">
         Delete
-        <v-dialog v-model="dialog" activator="parent" width="auto">
+        <v-dialog v-model="deleteDialog" activator="parent" width="auto">
           <v-card>
             <v-card-text>
               Are you sure you want to delete this subscription ?
             </v-card-text>
             <v-card-actions>
-              <v-btn color="red" block @click="handleDelete"> Delete </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn color="red" @click="handleDelete"> Delete </v-btn>
+              <v-btn color="primary" @click="deleteDialog = false"
+                >Cancel</v-btn
+              >
             </v-card-actions>
-            <v-btn color="primary" block @click="dialog = false">Cancel</v-btn>
           </v-card>
         </v-dialog>
       </v-btn>
