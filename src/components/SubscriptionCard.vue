@@ -13,7 +13,6 @@ const props = defineProps({
 });
 
 const handleDelete = () => {
-  //delete
   const store = useSubscriptionItemStore();
   store.remove(props.card.id);
   snackbar.value = true;
@@ -37,10 +36,6 @@ const initialDateStr = (dateStr: string) => {
 
   return `${dateStrSegment[2]}-${dateStrSegment[1]}-${dateStrSegment[0]}`;
 };
-
-onMounted(() => {
-  console.log(`Date is ${JSON.stringify(props.card.date)}`);
-});
 
 const name = ref(props.card.title);
 const date = ref(new Date(initialDateStr(props.card.date)));
