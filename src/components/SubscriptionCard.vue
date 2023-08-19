@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Card } from "./types";
-import { PropType, ref } from "vue";
+import { PropType, ref, onMounted } from "vue";
 import { enAU } from "date-fns/locale";
 import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
 
@@ -32,8 +32,18 @@ const nameRules = [
   },
 ];
 
+const initialDateStr = (dateStr: string) => {
+  const dateStrSegment = dateStr.split("/");
+
+  return `${dateStrSegment[2]}-${dateStrSegment[1]}-${dateStrSegment[0]}`;
+};
+
+onMounted(() => {
+  console.log(`Date is ${JSON.stringify(props.card.date)}`);
+});
+
 const name = ref(props.card.title);
-const date = ref(new Date(props.card.date));
+const date = ref(new Date(initialDateStr(props.card.date)));
 const images = ref([]);
 </script>
 
@@ -52,8 +62,8 @@ const images = ref([]);
       <div>Subscribed on {{ card?.date }}</div>
     </v-card-text>
     <v-card-actions>
-      <v-btn color="blue">
-        Details
+      <v-btn color="success">
+        Update
         <v-dialog v-model="detailsDialog" activator="parent" width="auto">
           <v-card>
             <v-card-text>
