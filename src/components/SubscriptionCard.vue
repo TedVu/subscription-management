@@ -1,10 +1,14 @@
 <script lang="ts" setup>
 import { Card } from "./types";
-import { PropType, ref, onMounted } from "vue";
+import { PropType, ref } from "vue";
 import { enAU } from "date-fns/locale";
 import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
+import { doc, updateDoc } from "firebase/firestore";
+import { useFirebaseDataStore } from "../firebase";
 
 const snackbar = ref(false);
+const snackbarColor = ref("");
+const snackbarMsg = ref("");
 const deleteDialog = ref(false);
 const detailsDialog = ref(false);
 
@@ -16,11 +20,36 @@ const handleDelete = () => {
   const store = useSubscriptionItemStore();
   store.remove(props.card.id);
   snackbar.value = true;
+  snackbarColor.value = "error";
+  snackbarMsg.value = "Delete a subscription successful!";
   deleteDialog.value = false;
 
   setTimeout(() => {
     snackbar.value = false;
+    snackbarColor.value = "";
+    snackbarMsg.value = "";
   }, 3000);
+};
+
+const handleUpdate = () => {
+  const { db } = useFirebaseDataStore();
+  const docRef = doc(db, "subscriptions", props.card.id);
+
+  const updatedCard = {
+    title: name.value,
+    date: date.value,
+    imageExtension: (images.value[0] as File).name.split(".").pop(),
+  };
+
+  updateDoc(docRef, updatedCard)
+    .then(() => {
+      snackbar.value = true;
+      snackbarColor.value = "success";
+      snackbarMsg.value = "Update a subscription successful!";
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 const nameRules = [
@@ -88,7 +117,7 @@ const images = ref([]);
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="success" @click="handleDelete"> Update </v-btn>
+              <v-btn color="success" @click="handleUpdate"> Update </v-btn>
               <v-btn color="primary" @click="detailsDialog = false"
                 >Cancel</v-btn
               >
