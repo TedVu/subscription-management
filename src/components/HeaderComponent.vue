@@ -53,7 +53,7 @@ const handleNavigation = (page: string) => {
         <v-list-item
           :active="computeActiveState('/home')"
           prepend-icon="mdi-view-dashboard"
-          title="Home" 
+          title="Home"
           value="home"
           @click="handleNavigation('Home')"
         />
@@ -69,6 +69,13 @@ const handleNavigation = (page: string) => {
           prepend-icon="mdi-account"
           title="New Subscription"
           value="New Subscription"
+          @click="handleNavigation('NewSubcription')"
+        />
+        <v-list-item
+          :active="computeActiveState('/notifications')"
+          prepend-icon="mdi-account"
+          title="Notifications"
+          value="Notifications"
           @click="handleNavigation('NewSubcription')"
         />
         <v-list-item

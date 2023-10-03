@@ -46,6 +46,11 @@ const routes = [
         meta: { requiresAuth: true },
     },
     {
+        path: "/notification",
+        component: NewSubscription,
+        meta: { requiresAuth: true },
+    },
+    {
         path: "/:pathMatch(.*)*",
         component: Error,
         meta: { requiresAuth: false },
