@@ -24,6 +24,9 @@ const handleNavigation = (page: string) => {
     case "Home":
       router.push("/home");
       break;
+    case "Notification":
+      router.push("/notifications");
+      break;
     default:
       store.logout();
       router.push("/");
@@ -76,7 +79,7 @@ const handleNavigation = (page: string) => {
           prepend-icon="mdi-account"
           title="Notifications"
           value="Notifications"
-          @click="handleNavigation('NewSubcription')"
+          @click="handleNavigation('Notification')"
         />
         <v-list-item
           prepend-icon="mdi-logout"

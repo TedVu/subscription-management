@@ -8,6 +8,7 @@ import Home from "./Pages/HomePage.vue";
 import Login from "./Pages/LoginPage.vue";
 import NewSubscription from "./Pages/NewSubscriptionPage.vue";
 import Error from "./Pages/ErrorPage.vue";
+import NotificationPageVue from "./pages/NotificationPage.vue";
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
@@ -46,8 +47,8 @@ const routes = [
         meta: { requiresAuth: true },
     },
     {
-        path: "/notification",
-        component: NewSubscription,
+        path: "/notifications",
+        component: NotificationPageVue,
         meta: { requiresAuth: true },
     },
     {
