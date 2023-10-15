@@ -49,7 +49,7 @@ Build a bundle file for production
 - DEFECT: Refresh rate when deleting a subscription item is not consistent [ ]
 - DEFECT: Render an item without data causes error, we should handle this case gracefully [ ]
 - DEFECT: Two images may be overlapped based on the name - as we are using name-date => we should use name-dateiso string instead [ ]
-- DEFECT: Images not loading [ ]
+- DEFECT: Images not loading [X]
 
 ## Customer facing features
 - FEATURE: Improve logout experience [X]
@@ -62,6 +62,7 @@ Build a bundle file for production
 - FEATURE: Implement update action including adding a details page [  ]
 
 ## Technical features
+- FEATURE: Implement cleanup for storage [ ]
 - FEATURE: Code hot reload still doesn't work properly [ ]
 - FEATURE: Refactor into composables [ ]
 - FEATURE: Improve DX with Volar [ ]

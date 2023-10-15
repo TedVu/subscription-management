@@ -31,7 +31,7 @@ const handleDelete = () => {
   }, 3000);
 };
 
-const handleUpdate = () => {
+const handleUpdate = async () => {
   const { db } = useFirebaseDataStore();
   const docRef = doc(db, "subscriptions", props.card.id);
 
@@ -41,15 +41,16 @@ const handleUpdate = () => {
     imageExtension: (images.value[0] as File).name.split(".").pop(),
   };
 
-  updateDoc(docRef, updatedCard)
-    .then(() => {
-      snackbar.value = true;
-      snackbarColor.value = "success";
-      snackbarMsg.value = "Update a subscription successful!";
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    await updateDoc(docRef, updatedCard);
+    snackbarColor.value = "success";
+    snackbarMsg.value = "Update a subscription successful!";
+    snackbar.value = true;
+  } catch (e) {
+    console.error(e);
+  } finally {
+    console.log("We do cleanup here");
+  }
 };
 
 const nameRules = [
@@ -144,8 +145,8 @@ const images = ref([]);
       </v-btn>
     </v-card-actions>
   </v-card>
-  <v-snackbar v-model="snackbar" color="error">
-    {{ "Delete a subscription successful!" }}
+  <v-snackbar v-model="snackbar" :color="snackbarColor">
+    {{ snackbarMsg }}
   </v-snackbar>
 </template>
 
