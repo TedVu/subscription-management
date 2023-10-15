@@ -1,6 +1,12 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {
+    DocumentData,
+    DocumentReference,
+    getFirestore,
+    updateDoc,
+} from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { Card } from "./components/types";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC85KMacum02NekX0TXG34LIEJRyNoqcW8",
@@ -15,6 +21,17 @@ let app: FirebaseApp;
 
 const initFirebase = () => {
     app = initializeApp(firebaseConfig);
+};
+
+const updateDocFirestore = (
+    docRef: DocumentReference<DocumentData>,
+    card: Card
+) => {
+    console.log(`Updated card in firebase is ${JSON.stringify(card)}`);
+
+    updateDoc(docRef, {
+        ...card,
+    });
 };
 
 const useFirebaseDataStore = () => {
@@ -72,5 +89,6 @@ export {
     initFirebase,
     useFirebaseDataStore,
     uploadFiles,
+    updateDocFirestore as updateDoc,
     getSubscriptionImageUrl,
 };

@@ -63,10 +63,12 @@ Build a bundle file for production
 
 ## Technical features
 - FEATURE: Implement cleanup for storage [ ]
+- FEATURE: Implement TS Path Alias [ ]
 - FEATURE: Code hot reload still doesn't work properly [ ]
 - FEATURE: Refactor into composables [ ]
 - FEATURE: Improve DX with Volar [ ]
 - FEATURE: Dockerize the application [ ]
+- FEATURE: Improve security => is it secure to store firestore key ? [ ]
 
 ## Regular code cleanup
 - CLEANUP: Cleanup and refactor, consider applying any design pattern if necessary

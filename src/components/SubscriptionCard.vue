@@ -3,8 +3,8 @@ import { Card } from "./types";
 import { PropType, ref } from "vue";
 import { enAU } from "date-fns/locale";
 import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
-import { doc, updateDoc } from "firebase/firestore";
-import { useFirebaseDataStore } from "../firebase";
+import { doc } from "firebase/firestore";
+import { useFirebaseDataStore, updateDoc } from "../firebase";
 
 const snackbar = ref(false);
 const snackbarColor = ref("");
@@ -42,6 +42,7 @@ const handleUpdate = async () => {
   };
 
   try {
+    console.log(`Updated card is ${JSON.stringify(updatedCard)}`);
     await updateDoc(docRef, updatedCard);
     snackbarColor.value = "success";
     snackbarMsg.value = "Update a subscription successful!";
