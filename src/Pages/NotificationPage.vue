@@ -12,7 +12,7 @@
 
     <v-list :items="items" item-props lines="three">
       <template #subtitle="{ subtitle }">
-        <div v-html="subtitle"></div>
+        <div>{{ subtitle }}</div>
       </template>
     </v-list>
   </v-card>
