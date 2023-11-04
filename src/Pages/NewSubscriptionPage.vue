@@ -44,7 +44,6 @@ const submit = async () => {
     ).name
       .split(".")
       .pop()}`;
-    console.log(`Image name is ${JSON.stringify(imageName)}`);
     await addDoc(collection(db, "subscriptions"), {
       name: name.value,
       date: date.value,
