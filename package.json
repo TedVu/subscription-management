@@ -9,7 +9,7 @@
         "build": "vue-tsc && vite build",
         "preview": "vite preview",
         "prepare": "husky install",
-        "lint-staged": "eslint --quiet --fix"
+        "lint-staged": "eslint --fix"
     },
     "dependencies": {
         "@mdi/font": "^7.1.96",
