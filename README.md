@@ -50,6 +50,7 @@ Build a bundle file for production
 - DEFECT: Render an item without data causes error, we should handle this case gracefully [ ]
 - DEFECT: Two images may be overlapped based on the name - as we are using name-date => we should use name-dateiso string instead [ ]
 - DEFECT: Images not loading [X]
+- DEFECT: Images isn't layouted well on mobile []
 
 ## Customer facing features
 - FEATURE: Improve logout experience [X]
@@ -59,7 +60,7 @@ Build a bundle file for production
 - FEATURE: Allow updating image when adding a new subscription [X]
 - FEATURE: Allow all types of graphical files to be uploaded [X]
 - FEATURE: Confirmation before executing delete operation [ ]
-- FEATURE: Implement update action including adding a details page [  ]
+- FEATURE: Implement update action including adding a details page [ ]
 
 ## Technical features
 - FEATURE: Implement cleanup for storage [ ]

@@ -6,7 +6,7 @@ import {
     updateDoc,
 } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { Card } from "./components/types";
+import { UpdatedCard } from "./components/types";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC85KMacum02NekX0TXG34LIEJRyNoqcW8",
@@ -25,10 +25,8 @@ const initFirebase = () => {
 
 const updateDocFirestore = (
     docRef: DocumentReference<DocumentData>,
-    card: Card
+    card: UpdatedCard
 ) => {
-    console.log(`Updated card in firebase is ${JSON.stringify(card)}`);
-
     updateDoc(docRef, {
         ...card,
     });

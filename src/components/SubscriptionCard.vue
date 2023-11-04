@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Card } from "./types";
+import { Card, UpdatedCard } from "./types";
 import { PropType, ref } from "vue";
 import { enAU } from "date-fns/locale";
 import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
@@ -34,12 +34,22 @@ const handleDelete = () => {
 const handleUpdate = async () => {
   const { db } = useFirebaseDataStore();
   const docRef = doc(db, "subscriptions", props.card.id);
+  let updatedCard: UpdatedCard = {};
 
-  const updatedCard = {
-    title: name.value,
-    date: date.value,
-    imageExtension: (images.value[0] as File).name.split(".").pop(),
-  };
+  if (name.value) {
+    updatedCard.name = name.value;
+  }
+
+  if (date.value) {
+    updatedCard.date = date.value;
+  }
+
+  if (images.value && images.value.length > 0) {
+    console.log(JSON.stringify(images.value));
+    updatedCard.imageExtension = (images.value[0] as File)?.name
+      .split(".")
+      .pop();
+  }
 
   try {
     console.log(`Updated card is ${JSON.stringify(updatedCard)}`);
@@ -64,7 +74,6 @@ const nameRules = [
 
 const initialDateStr = (dateStr: string) => {
   const dateStrSegment = dateStr.split("/");
-
   return `${dateStrSegment[2]}-${dateStrSegment[1]}-${dateStrSegment[0]}`;
 };
 
@@ -74,7 +83,7 @@ const images = ref([]);
 </script>
 
 <template>
-  <v-card class="mx-auto" max-width="600" min-width="350">
+  <v-card>
     <v-img
       class="align-end text-black"
       height="200"
@@ -90,7 +99,12 @@ const images = ref([]);
     <v-card-actions>
       <v-btn color="success">
         Update
-        <v-dialog v-model="detailsDialog" activator="parent" width="auto">
+        <v-dialog
+          v-model="detailsDialog"
+          persistent
+          activator="parent"
+          width="auto"
+        >
           <v-card>
             <v-card-text>
               <v-form fast-fail validate-on="blur">
@@ -129,7 +143,12 @@ const images = ref([]);
       </v-btn>
       <v-btn color="red">
         Delete
-        <v-dialog v-model="deleteDialog" activator="parent" width="auto">
+        <v-dialog
+          v-model="deleteDialog"
+          persistent
+          activator="parent"
+          width="auto"
+        >
           <v-card>
             <v-card-text>
               Are you sure you want to delete this subscription?
@@ -150,5 +169,3 @@ const images = ref([]);
     {{ snackbarMsg }}
   </v-snackbar>
 </template>
-
-<style></style>

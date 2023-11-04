@@ -6,7 +6,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
 import { enAU } from "date-fns/locale";
 import { collection, addDoc } from "firebase/firestore";
 import { useFirebaseDataStore, uploadFiles } from "../firebase";
-import { buildUniqueFilename } from "../services/fileService";
+import { v4 as uuidv4 } from "uuid";
 
 const name = ref("");
 const date = ref(null);
@@ -40,14 +40,14 @@ const submit = async () => {
   if (isAllDataCorrect()) {
     loading.value = true;
     const { db } = useFirebaseDataStore();
+    const imageName = uuidv4();
     await addDoc(collection(db, "subscriptions"), {
       name: name.value,
       date: date.value,
-      imageExtension: (images.value[0] as File).name.split(".").pop(),
+      imageName: imageName,
     });
 
-    const uniqueFilename = buildUniqueFilename(name.value, date.value);
-    uploadFiles(images.value[0], uniqueFilename);
+    uploadFiles(images.value[0], imageName);
     loading.value = false;
     snackbar.value = true;
     snackbarMsg.value = "Adding a new subscription successful!";
