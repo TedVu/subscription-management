@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+import { v4 as uuidv4 } from "uuid";
 import { Card, UpdatedCard } from "./types";
 import { PropType, ref } from "vue";
 import { enAU } from "date-fns/locale";
 import { useSubscriptionItemStore } from "../stores/SubscriptionItemsStore";
 import { doc } from "firebase/firestore";
 import { useFirebaseDataStore, updateDoc } from "../firebase";
+import { uploadFiles } from "../firebase";
 
 const snackbar = ref(false);
 const snackbarColor = ref("");
@@ -45,10 +47,12 @@ const handleUpdate = async () => {
   }
 
   if (images.value && images.value.length > 0) {
-    console.log(JSON.stringify(images.value));
-    updatedCard.imageExtension = (images.value[0] as File)?.name
+    const imageName = uuidv4();
+    updatedCard.imageName = `${imageName}.${(images.value[0] as File)?.name
       .split(".")
-      .pop();
+      .pop()}`;
+
+    await uploadFiles(images.value[0], updatedCard.imageName);
   }
 
   try {

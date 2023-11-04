@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { buildUniqueFilename } from "../services/FileService";
 import { useFirebaseDataStore, getSubscriptionImageUrl } from "../firebase";
 import {
     Timestamp,
@@ -46,7 +45,6 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
 
                     const name = doc.data().name;
                     const id = doc.id;
-
                     const storageLocation = `images/${doc.data().imageName}`;
                     const imageUrl = await getSubscriptionImageUrl(
                         storageLocation

@@ -8,5 +8,5 @@ export type Card = {
 export type UpdatedCard = {
     name?: string;
     date?: Date;
-    imageExtension?: string;
+    imageName?: string;
 };
