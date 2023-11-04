@@ -19,7 +19,6 @@ const snackbarColor = ref("");
 const nameRules = [
   (name: string) => {
     if (name?.length >= 3) return true;
-
     return "Subscription name must be at least 3 characters.";
   },
 ];
@@ -40,7 +39,12 @@ const submit = async () => {
   if (isAllDataCorrect()) {
     loading.value = true;
     const { db } = useFirebaseDataStore();
-    const imageName = uuidv4();
+    const imageName = `${uuidv4().replaceAll("-", "")}.${(
+      images.value[0] as File
+    ).name
+      .split(".")
+      .pop()}`;
+    console.log(`Image name is ${JSON.stringify(imageName)}`);
     await addDoc(collection(db, "subscriptions"), {
       name: name.value,
       date: date.value,

@@ -47,13 +47,7 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
                     const name = doc.data().name;
                     const id = doc.id;
 
-                    const storageLocation = `images/${buildUniqueFilename(
-                        name,
-                        new Timestamp(
-                            doc.data().date.seconds,
-                            doc.data().date.nanoseconds
-                        ).toDate()
-                    )}.${doc.data().imageExtension}`;
+                    const storageLocation = `images/${doc.data().imageName}`;
                     const imageUrl = await getSubscriptionImageUrl(
                         storageLocation
                     );

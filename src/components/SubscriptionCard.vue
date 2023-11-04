@@ -52,7 +52,6 @@ const handleUpdate = async () => {
   }
 
   try {
-    console.log(`Updated card is ${JSON.stringify(updatedCard)}`);
     await updateDoc(docRef, updatedCard);
     snackbarColor.value = "success";
     snackbarMsg.value = "Update a subscription successful!";

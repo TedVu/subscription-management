@@ -39,13 +39,9 @@ const useFirebaseDataStore = () => {
     };
 };
 
-const uploadFiles = (file: File, uniqueFilename: string) => {
-    const fileExtension = file.name.split(".").pop();
-    const fullFilename = `${uniqueFilename}.${fileExtension}`;
+const uploadFiles = (file: File, fileName: string) => {
     const storage = getStorage(app);
-    const storageRef = ref(storage, `images/${fullFilename}`);
-
-    // 'file' comes from the Blob or File API
+    const storageRef = ref(storage, `images/${fileName}`);
     uploadBytes(storageRef, file);
 };
 
