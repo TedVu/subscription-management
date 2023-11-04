@@ -18,6 +18,22 @@ const props = defineProps({
   card: { type: Object as PropType<Card>, default: null },
 });
 
+const initialDateStr = (dateStr: string) => {
+  const dateStrSegment = dateStr.split("/");
+  return `${dateStrSegment[2]}-${dateStrSegment[1]}-${dateStrSegment[0]}`;
+};
+
+const name = ref(props.card.title);
+const date = ref(new Date(initialDateStr(props.card.date)));
+const images = ref([]);
+
+const nameRules = [
+  (name: string) => {
+    if (name?.length >= 3) return true;
+    return "Subscription name must be at least 3 characters.";
+  },
+];
+
 const handleDelete = () => {
   const store = useSubscriptionItemStore();
   store.remove(props.card.id);
@@ -51,7 +67,6 @@ const handleUpdate = async () => {
     updatedCard.imageName = `${imageName}.${(images.value[0] as File)?.name
       .split(".")
       .pop()}`;
-
     await uploadFiles(images.value[0], updatedCard.imageName);
   }
 
@@ -60,29 +75,20 @@ const handleUpdate = async () => {
     snackbarColor.value = "success";
     snackbarMsg.value = "Update a subscription successful!";
     snackbar.value = true;
+    detailsDialog.value = false;
+    setTimeout(() => {
+      snackbar.value = true;
+      const store = useSubscriptionItemStore();
+      // This can be improved by 'separate updating concept' we update
+      // fe and be separately
+      store.getSubscriptionItemsFromServer();
+    }, 2000);
   } catch (e) {
     console.error(e);
   } finally {
     console.log("We do cleanup here");
   }
 };
-
-const nameRules = [
-  (name: string) => {
-    if (name?.length >= 3) return true;
-
-    return "Subscription name must be at least 3 characters.";
-  },
-];
-
-const initialDateStr = (dateStr: string) => {
-  const dateStrSegment = dateStr.split("/");
-  return `${dateStrSegment[2]}-${dateStrSegment[1]}-${dateStrSegment[0]}`;
-};
-
-const name = ref(props.card.title);
-const date = ref(new Date(initialDateStr(props.card.date)));
-const images = ref([]);
 </script>
 
 <template>

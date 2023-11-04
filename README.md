@@ -59,16 +59,16 @@ Build a bundle file for production
 - FEATURE: Menu bar on the side showing the current page [X]
 - FEATURE: Allow updating image when adding a new subscription [X]
 - FEATURE: Allow all types of graphical files to be uploaded [X]
-- FEATURE: Confirmation before executing delete operation [ ]
-- FEATURE: Implement update action including adding a details page [ ]
+- FEATURE: Confirmation before executing delete operation [X]
+- FEATURE: Implement update action [X]
+- FEATURE: Implementt notification service []
 
 ## Technical features
-- FEATURE: Implement cleanup for storage [ ]
+- FEATURE: Implement cleanup for storage (currently files are added to firebase storage without deletion) [ ]
 - FEATURE: Implement TS Path Alias [ ]
-- FEATURE: Code hot reload still doesn't work properly [ ]
+- FEATURE: Code hot reload still doesn't work properly [X]
 - FEATURE: Refactor into composables [ ]
 - FEATURE: Improve DX with Volar [ ]
-- FEATURE: Dockerize the application [ ]
 - FEATURE: Improve security => is it secure to store firestore key ? [ ]
 
 ## Regular code cleanup

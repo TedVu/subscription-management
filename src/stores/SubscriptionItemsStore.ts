@@ -27,7 +27,7 @@ export const useSubscriptionItemStore = defineStore("subscription-item", {
         add() {
             // TO BE IMPLEMENTED
         },
-        update(id: string) {
+        update() {
             // TO BE IMPLEMENTED
         },
         getSubscriptionItemsFromServer() {
